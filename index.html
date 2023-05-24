@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR7</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #01212d;
+            position: relative;
+        }
+
+        .main {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .clip {
+            width: 100%;
+            height: 100%;
+            background-color: #00292d;
+            clip-path: polygon(100% 0, 0% 100%, 0 0);
+            position: absolute;
+            z-index: -99;
+            left: 0;
+            top: 0;
+        }
+
+        .main table tr td input {
+            background-color: #ffffff82;
+            border: none;
+            font-family: 'Wix Madefor Display';
+            font-weight: 600;
+            padding: 18px 0;
+            border-radius: 50px 50px;
+            width: 500px;
+            font-size: 22px;
+        }
+        .main table tr td input:focus{
+            border: 0;
+        }
+        .main table tr td {
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .main h1 {
+            font-family: 'Secular One', sans-serif;
+            color: white;
+            text-align: center;
+            font-size: 45px;
+        }
+        .main button{
+            border: none;
+            width: 500px;
+            padding: 7px 0;
+            border-radius: 50px 50px;
+            font-family: 'Secular One', sans-serif;
+            text-align: center;
+            font-size: 35px;
+            color: #01212d;
+        }
+
+        ::placeholder {
+            color: #00292d;
+            font-size: 22px;
+        }
+        .icon1{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            z-index: 99999;
+            top: 10%;
+            left: 0;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .icon2{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            z-index: 99999;
+            top: 10%;
+            right: 0;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .icon1 i,.icon2 i{
+            line-height: 80px;
+            font-size: 35px;
+            color: #00292d;
+        }
+        .padding{
+            padding: 18px 0 18px 95px  !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="clip"></div>
+    <div class="main d-flex justify-content-center align-items-center">
+        <table>
+            <tr>
+                <th>
+                    <h1>Form Validation </h1>
+                </th>
+            </tr>
+            <tr>
+                <td><input type="text" id="name" onkeyup="myfun()" placeholder="Username" class="padding">
+                <div class="icon1"><i class="fa-regular fa-user"></i></div>
+            </tr>
+            <tr>
+                <td><input type="email" id="email" placeholder="E-mail" class="ps-4 ">
+                    <div class="icon2"><i class="fa-solid fa-earth-americas"></i></div>
+            </tr>
+            <tr>
+                <td><input type="password" id="password" placeholder="Password" class="padding ">
+                    <div class="icon1"><i class="fa-solid fa-lock"></i></div>
+            </tr>
+            <tr>
+                <td><input type="password" id="con" placeholder="Confirm Password" class="ps-4 ">
+                    <div class="icon2"><i class="fa-solid fa-shield"></i></div>
+            </tr>
+            <tr>
+                <td><button id="button" onclick="save()">submit</button></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script type="text/javascript">
+
+        const save = () => {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var con = document.getElementById('con').value;
+
+            console.log(name);
+            console.log(email);
+            console.log(password);
+
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (!name || !email || !password || !con) {
+                alert("Please Enter of All Data ");
+                return false;
+            }
+            if (!name) {
+                alert("Please Enter valid Name");
+                return false;
+            }
+            else if (name < 0 || name > 9) {
+                alert("Name Fild Not Valid Number");
+                return false;
+            }
+            if (!email) {
+                alert("Please Enter email");
+                return false;
+            } else if (!email.match(mailformat)) {
+                alert("Please Enter of Valid email");
+                return false;
+            }
+            if (!password) {
+                alert("Please Enter password");
+                return false;
+            } if (!con) {
+                alert("Please Enter Confirm Password");
+                return false;
+            }
+            if (password != con) {
+                alert("Password is not same Confirm Password");
+                return false;
+            }
+            if (password.length >= 8 && password.length <= 15) {
+
+            } else {
+                alert("Not Valid password");
+                return false;
+            }
+            var name = document.getElementById('name').value = "";
+            var email = document.getElementById('email').value = "";
+            var password = document.getElementById('password').value = "";
+            var con = document.getElementById('con').value = "";
+
+        }
+        const myfun = () => {
+            var name = document.getElementById('name');
+            name.value = name.value.toUpperCase();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+</body>
+
+</html>
